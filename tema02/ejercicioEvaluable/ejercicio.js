@@ -242,8 +242,21 @@ function gestorListaTareas() {
 			case "1":
 				var nombreTarea = prompt("Escribe la tarea a agregar:");
 				if (nombreTarea && nombreTarea.trim() !== "") {
-					tareas.push({ nombre: nombreTarea.trim(), completada: false });
-					alert("Tarea agregada correctamente.");
+					var nombreLimpio = nombreTarea.trim();
+					var tareaRepetida = false;
+
+					for (var index = 0; index < tareas.length; index++) {
+						if (tareas[index].nombre.toLowerCase() === nombreLimpio.toLowerCase()) {
+							tareaRepetida = true;
+						}
+					}
+
+					if (tareaRepetida) {
+						alert("Ya hay una tarea con ese nombre.");
+					} else {
+						tareas.push({ nombre: nombreLimpio, completada: false });
+						alert("Tarea agregada correctamente.");
+					}
 				} else {
 					alert("No se ha añadido ninguna tarea.");
 				}
