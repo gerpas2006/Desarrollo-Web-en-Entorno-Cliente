@@ -18,18 +18,21 @@ function analizarFrase() {
 		}
 	} while (palabras.length < 5);
 
+	// Quito los espacios y cuento los caracteres que quedan.
 	var caracteresSinEspacios = frase.replace(/\s/g, "").length;
+	// Cambio todas las vocales por asteriscos, también las que llevan tilde.
 	var vocalesSustituidas = frase.replace(/[aeiouáéíóúüAEIOUÁÉÍÓÚÜ]/g, "*");
 	var posicion = 0;
+	// Con \S ignoro los espacios y cuento solo los caracteres de la frase.
 	var elementosParesSustituidos = frase.replace(/\S/g, function (caracter) {
 		posicion++;
 		return posicion % 2 === 0 ? "_" : caracter;
 	});
 
-	console.log("Análisis de la frase");
-	console.log("Caracteres sin espacios: " + caracteresSinEspacios);
-	console.log("Vocales sustituidas: " + vocalesSustituidas);
-	console.log("Elementos pares sustituidos: " + elementosParesSustituidos);
+	console.log("%cAnálisis de la frase", "color: white; background: #1f6feb; padding: 4px 8px; font-weight: bold;");
+	console.log("%cCaracteres sin espacios: " + caracteresSinEspacios, "color: #1f6feb; font-weight: bold;");
+	console.log("%cVocales sustituidas: " + vocalesSustituidas, "color: #cf222e; font-weight: bold;");
+	console.log("%cElementos pares sustituidos: " + elementosParesSustituidos, "color: #2da44e; font-weight: bold;");
 }
 
 function ordenarYBuscarPalabras() {
@@ -39,9 +42,11 @@ function ordenarYBuscarPalabras() {
 		palabras.push(prompt("Introduce la palabra " + (i + 1) + " de 7:").trim());
 	}
 
+	// Me quedo solo con las palabras que tienen más de cuatro letras.
 	var listado = palabras.filter(function (palabra) {
 		return palabra.length > 4;
 	});
+	// Paso las palabras a minúsculas para ordenarlas sin tener en cuenta las mayúsculas.
 	listado.sort(function (a, b) {
 		return a.toLowerCase().localeCompare(b.toLowerCase());
 	});
@@ -49,6 +54,7 @@ function ordenarYBuscarPalabras() {
 	console.log(listado);
 
 	var palabraBuscada = prompt("Introduce una palabra para buscarla:").trim();
+	// Miro si la palabra está en la lista, da igual si se escribe en mayúsculas o minúsculas.
 	var estaEnLaLista = listado.some(function (palabra) {
 		return palabra.toLowerCase() === palabraBuscada.toLowerCase();
 	});
@@ -77,17 +83,21 @@ function operacionesConConjuntos() {
 		multiplosDeTres.add(j);
 	}
 
-	// Estas operaciones combinan los conjuntos sin repetir valores.
+	// Uno los dos conjuntos y no se repiten los números.
 	var union = new Set([...multiplosDeDos, ...multiplosDeTres]);
+	// Aquí me quedo con los números que aparecen en los dos conjuntos.
 	var interseccion = new Set([...multiplosDeDos].filter(function (numero) {
 		return multiplosDeTres.has(numero);
 	}));
+	// Saco los números del primer conjunto que no aparecen en el segundo.
 	var diferenciaPrimero = new Set([...multiplosDeDos].filter(function (numero) {
 		return !multiplosDeTres.has(numero);
 	}));
+	// Saco los números del segundo conjunto que no aparecen en el primero.
 	var diferenciaSegundo = new Set([...multiplosDeTres].filter(function (numero) {
 		return !multiplosDeDos.has(numero);
 	}));
+	// Junto las dos diferencias para tener los números que solo están en un conjunto.
 	var diferenciaSimetrica = new Set([
 		...diferenciaPrimero,
 		...diferenciaSegundo
@@ -158,12 +168,13 @@ function valoresUnicos(){
 		return Number(valor);
 	});
 
-	// Contamos cuántas veces aparece cada número para quedarnos solo con los que salen una vez.
+	// Uso un Map para apuntar cuántas veces sale cada número.
 	var frecuencias = new Map();
 	numeros.forEach(function (numero) {
 		frecuencias.set(numero, (frecuencias.get(numero) || 0) + 1);
 	});
 
+	// Me quedo con los números que aparecen una sola vez.
 	var valoresUnicos = numeros.filter(function (numero, indice, array) {
 		return frecuencias.get(numero) === 1 && array.indexOf(numero) === indice;
 	});
@@ -188,7 +199,7 @@ function detectarPalindromo() {
 		return;
 	}
 
-	// Quitamos tildes, espacios y signos para comparar solo letras.
+	// Limpio el texto: lo paso a minúsculas y quito tildes, espacios y signos.
 	var textoLimpio = frase
 		.toLowerCase()
 		.replace(/[áàäâ]/g, "a")
@@ -198,6 +209,7 @@ function detectarPalindromo() {
 		.replace(/[úùüû]/g, "u")
 		.replace(/[^a-zñ]/g, "");
 
+	// Separo el texto, le doy la vuelta y lo vuelvo a juntar.
 	var textoInvertido = textoLimpio.split("").reverse().join("");
 
 	if (textoLimpio === textoInvertido) {
@@ -226,64 +238,77 @@ function gestorListaTareas() {
 			return;
 		}
 
-		if (opcion === "1") {
-			var nombreTarea = prompt("Escribe la tarea a agregar:");
-			if (nombreTarea && nombreTarea.trim() !== "") {
-				// Cada tarea se guarda con nombre y estado para poder marcarla después.
-				tareas.push({ nombre: nombreTarea.trim(), completada: false });
-				alert("Tarea agregada correctamente.");
-			} else {
-				alert("No se ha añadido ninguna tarea.");
-			}
-		} else if (opcion === "2") {
-			if (tareas.length === 0) {
-				alert("No hay tareas para completar.");
-			} else {
-				var indiceCompletar = Number(prompt("Introduce el número de la tarea que quieres completar (1-" + tareas.length + ")"));
-				if (indiceCompletar >= 1 && indiceCompletar <= tareas.length) {
-					tareas[indiceCompletar - 1].completada = true;
-					alert("Tarea completada.");
+		switch (opcion) {
+			case "1":
+				var nombreTarea = prompt("Escribe la tarea a agregar:");
+				if (nombreTarea && nombreTarea.trim() !== "") {
+					tareas.push({ nombre: nombreTarea.trim(), completada: false });
+					alert("Tarea agregada correctamente.");
 				} else {
-					alert("Número de tarea no válido.");
+					alert("No se ha añadido ninguna tarea.");
 				}
-			}
-		} else if (opcion === "3") {
-			if (tareas.length === 0) {
-				alert("No hay tareas para eliminar.");
-			} else {
-				var indiceEliminar = Number(prompt("Introduce el número de la tarea que quieres eliminar (1-" + tareas.length + ")"));
-				if (indiceEliminar >= 1 && indiceEliminar <= tareas.length) {
-					tareas.splice(indiceEliminar - 1, 1);
-					alert("Tarea eliminada.");
-				} else {
-					alert("Número de tarea no válido.");
-				}
-			}
-		} else if (opcion === "4") {
-			if (tareas.length === 0) {
-				alert("No hay tareas guardadas.");
-			} else {
-				var listado = "";
-				for (var i = 0; i < tareas.length; i++) {
-					listado += (i + 1) + ". " + tareas[i].nombre + " - " + (tareas[i].completada ? "Completada" : "Pendiente") + "\n";
-				}
-				alert(listado);
-			}
-		} else if (opcion === "5") {
-			var pendientes = "";
-			for (var j = 0; j < tareas.length; j++) {
-				if (!tareas[j].completada) {
-					pendientes += (j + 1) + ". " + tareas[j].nombre + "\n";
-				}
-			}
+				break;
 
-			if (pendientes === "") {
-				alert("No hay tareas pendientes.");
-			} else {
-				alert("Tareas pendientes:\n" + pendientes);
-			}
-		} else if (opcion !== "0") {
-			alert("Opción no válida.");
+			case "2":
+				if (tareas.length === 0) {
+					alert("No hay tareas para completar.");
+				} else {
+					var indiceCompletar = Number(prompt("Introduce el número de la tarea que quieres completar (1-" + tareas.length + ")"));
+					if (indiceCompletar >= 1 && indiceCompletar <= tareas.length) {
+						tareas[indiceCompletar - 1].completada = true;
+						alert("Tarea completada.");
+					} else {
+						alert("Número de tarea no válido.");
+					}
+				}
+				break;
+
+			case "3":
+				if (tareas.length === 0) {
+					alert("No hay tareas para eliminar.");
+				} else {
+					var indiceEliminar = Number(prompt("Introduce el número de la tarea que quieres eliminar (1-" + tareas.length + ")"));
+					if (indiceEliminar >= 1 && indiceEliminar <= tareas.length) {
+						tareas.splice(indiceEliminar - 1, 1);
+						alert("Tarea eliminada.");
+					} else {
+						alert("Número de tarea no válido.");
+					}
+				}
+				break;
+
+			case "4":
+				if (tareas.length === 0) {
+					alert("No hay tareas guardadas.");
+				} else {
+					var listado = "";
+					for (var i = 0; i < tareas.length; i++) {
+						listado += (i + 1) + ". " + tareas[i].nombre + " - " + (tareas[i].completada ? "Completada" : "Pendiente") + "\n";
+					}
+					alert(listado);
+				}
+				break;
+
+			case "5":
+				var pendientes = "";
+				for (var j = 0; j < tareas.length; j++) {
+					if (!tareas[j].completada) {
+						pendientes += (j + 1) + ". " + tareas[j].nombre + "\n";
+					}
+				}
+
+				if (pendientes === "") {
+					alert("No hay tareas pendientes.");
+				} else {
+					alert("Tareas pendientes:\n" + pendientes);
+				}
+				break;
+
+			case "0":
+				break;
+
+			default:
+				alert("Opción no válida.");
 		}
 	}
 }
