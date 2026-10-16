@@ -1,0 +1,43 @@
+<div class="calculadora-container">
+  <h3>Calculadora Simple</h3>
+
+<div class="formulario">
+    <div class="campo">
+      <label for="num1">Número 1:</label>
+      <input 
+        id="num1" 
+        type="number" 
+        [(ngModel)]="numero1" 
+        placeholder="Ej. 10">
+    </div>
+
+    <div class="campo">
+      <label for="num2">Número 2:</label>
+      <input 
+        id="num2" 
+        type="number" 
+        [(ngModel)]="numero2" 
+        placeholder="Ej. 5">
+    </div>
+
+    <div class="panel-botones">
+      <button type="button" class="btn btn-operacion" (click)="sumar()">+</button>
+      <button type="button" class="btn btn-operacion" (click)="restar()">-</button>
+      <button type="button" class="btn btn-operacion" (click)="multiplicar()">×</button>
+      <button type="button" class="btn btn-operacion" (click)="dividir()">÷</button>
+      <button type="button" class="btn btn-especial" (click)="raizCuadrada()">√ (solo Num 1)</button>
+    </div>
+  </div>
+
+  <!-- Resultado y mensajes -->
+  @if (mensajeError) {
+    <p class="error">{{ mensajeError }}</p>
+  }
+
+  @if (resultado !== null && !mensajeError) {
+    <div class="resultado-box">
+      <span>Resultado:</span>
+      <strong>{{ resultado }}</strong>
+    </div>
+  }
+</div>

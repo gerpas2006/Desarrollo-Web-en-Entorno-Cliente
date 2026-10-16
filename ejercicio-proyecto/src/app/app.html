@@ -1,0 +1,58 @@
+<h1>Ejercicios</h1>
+
+<!-- Barra superior con todos los botones agrupados de forma horizontal -->
+<div class="barra-botones">
+  <button type="button" (click)="mostrarEjercicio01 = !mostrarEjercicio01">
+    {{ mostrarEjercicio01 ? 'Ocultar ejercicio 01' : 'Abrir ejercicio 01' }}
+  </button>
+
+  <button type="button" (click)="mostrarEjercicio03 = !mostrarEjercicio03">
+    {{ mostrarEjercicio03 ? 'Ocultar ejercicio 03' : 'Abrir ejercicio 03' }}
+  </button>
+
+  <button type="button" (click)="mostrarEjercicio06 = !mostrarEjercicio06">
+    {{ mostrarEjercicio06 ? 'Ocultar ejercicio 06' : 'Abrir ejercicio 06' }}
+  </button>
+
+  <button type="button" (click)="Ejercicio07 = !Ejercicio07">
+    {{ Ejercicio07 ? 'Ocultar ejercicio 07' : 'Abrir ejercicio 07' }}
+  </button>
+</div>
+
+<!-- Área donde se muestra el contenido del ejercicio desplegado -->
+<div class="contenedor-ejercicios">
+  @if (mostrarEjercicio01) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 01</h2>
+      <div class="ejercicio01-form">
+        <label for="nombre">Escribe tu nombre:</label>
+        <input id="nombre" type="text" [(ngModel)]="nombre" placeholder="Tu nombre">
+      </div>
+
+      @if (nombre.trim()) {
+        <app-ejercicio01 [nombre]="nombre"></app-ejercicio01>
+      }
+    </div>
+  }
+
+  @if (mostrarEjercicio03) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 03</h2>
+      <app-ejercicio03></app-ejercicio03>
+    </div>
+  }
+
+  @if (mostrarEjercicio06) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 06</h2>
+      <app-ejercicio06></app-ejercicio06>
+    </div>
+  }
+
+  @if (Ejercicio07) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 07</h2>
+      <app-ejercicio05></app-ejercicio05>
+    </div>
+  }
+</div>

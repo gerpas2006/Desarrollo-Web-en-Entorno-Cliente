@@ -1,0 +1,55 @@
+<div class="ejercicio06-container">
+  <!-- Formulario para ingresar el producto -->
+  <div class="formulario-producto">
+    <h3>Añadir Nuevo Producto</h3>
+
+    <div class="campo">
+      <label for="nombre">Nombre del producto:</label>
+      <input 
+        id="nombre" 
+        type="text" 
+        placeholder="Ej. Teclado Mecánico"
+        [(ngModel)]="nombreInput">
+    </div>
+
+    <div class="campo">
+      <label for="descripcion">Descripción:</label>
+      <textarea 
+        id="descripcion" 
+        placeholder="Escribe los detalles..."
+        [(ngModel)]="descripcionInput">
+      </textarea>
+    </div>
+
+    <div class="campo">
+      <label for="precio">Precio (€):</label>
+      <input 
+        id="precio" 
+        type="number" 
+        placeholder="0.00" 
+        step="0.01"
+        [(ngModel)]="precioInput">
+    </div>
+
+    <!-- Botón con el evento (click) para guardar -->
+    <button 
+      type="button" 
+      class="btn-guardar" 
+      (click)="guardarProducto()" 
+      [disabled]="!nombreInput.trim() || precioInput === null">
+      Crear Producto
+    </button>
+  </div>
+
+  <!-- Tarjeta que muestra el producto solo si ha sido creado -->
+  @if (productoCreado) {
+    <div class="tarjeta-producto">
+      <h2 class="titulo">Nombre Producto:{{ productoCreado.nombre }}</h2>
+      <p class="descripcion">Descripción Producto: {{ productoCreado.descripcion || 'Sin descripción' }}</p>
+
+      <div class="pie-tarjeta">
+        <span class="precio">Precio: {{ productoCreado.precio}}</span>
+      </div>
+    </div>
+  }
+</div>

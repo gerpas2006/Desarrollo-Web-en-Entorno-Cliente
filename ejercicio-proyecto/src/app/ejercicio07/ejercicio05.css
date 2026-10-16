@@ -1,0 +1,109 @@
+.calculadora-container {
+  max-width: 360px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calculadora-container h3 {
+  margin: 0 0 16px 0;
+  color: #1e293b;
+  text-align: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.campo input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.panel-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn {
+  flex: 1;
+  min-width: 50px;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-operacion {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn-operacion:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-especial {
+  flex: 100%;
+  font-size: 0.95rem;
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.btn-especial:hover {
+  background-color: #1e293b;
+}
+
+.resultado-box {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #166534;
+}
+
+.resultado-box strong {
+  font-size: 1.3rem;
+}
+
+.error {
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
