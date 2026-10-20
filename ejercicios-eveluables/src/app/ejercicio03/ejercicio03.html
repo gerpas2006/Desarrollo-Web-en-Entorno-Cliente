@@ -1,0 +1,30 @@
+<div class="controles">
+	<label for="color">Elige un color:</label>
+	<select id="color" [(ngModel)]="colorActual" (change)="cambiarColor()">
+		@for (color of colores; track color.valor) {
+			<option [value]="color.valor">{{ color.nombre }}</option>
+		}
+	</select>
+</div>
+
+<div class="recuadro" [style.background-color]="colorActual">
+	Color seleccionado
+</div>
+
+<p>Cambios registrados: {{ cambiosRegistrados }}</p>
+<p>Posición actual: {{ posicionActual }}</p>
+
+<div class="botones-historial">
+	<button type="button" (click)="volverAtras()">Atrás</button>
+	<button type="button" (click)="irAdelante()">Adelante</button>
+</div>
+
+<div class="retroceder-formulario">
+	<label for="numeroCambios">Cambios que quieres retroceder:</label>
+	<input id="numeroCambios" type="number" min="1" [(ngModel)]="numeroCambios">
+	<button type="button" (click)="volverAtras()">Retroceder</button>
+</div>
+
+@if (mensajeError) {
+	<p class="mensaje-error">{{ mensajeError }}</p>
+}

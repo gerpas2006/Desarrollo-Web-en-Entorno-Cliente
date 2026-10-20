@@ -1,0 +1,15 @@
+.controles-ventana {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 16px;
+}
+
+button {
+	padding: 6px 10px;
+}
+
+.mensaje-error {
+	color: #a40000;
+	font-weight: bold;
+}

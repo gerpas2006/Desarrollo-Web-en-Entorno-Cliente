@@ -1,0 +1,33 @@
+<main class="reloj">
+	<h1>Fecha y hora actual</h1>
+
+	<section class="relojes" aria-label="Relojes">
+		<article class="reloj-tarjeta">
+			<h2>Hora local</h2>
+			<p class="hora">{{ mostrarHora(fechaActual) }}</p>
+		</article>
+
+		<article class="reloj-tarjeta">
+			<h2>{{ nombreCiudadSeleccionada() }}</h2>
+			<p class="hora">{{ mostrarHora(fechaActual, ciudadSeleccionada) }}</p>
+		</article>
+	</section>
+
+	<section class="controles" aria-label="Opciones del reloj">
+		<label>
+			<input
+				type="checkbox"
+				[checked]="formato24Horas"
+				(change)="cambiarFormato()"
+			/>
+			Formato de 24 horas
+		</label>
+
+		<label for="ciudad">Segundo reloj:</label>
+		<select id="ciudad" [value]="ciudadSeleccionada" (change)="cambiarCiudad($event)">
+			@for (ciudad of ciudades; track ciudad.zonaHoraria) {
+				<option [value]="ciudad.zonaHoraria">{{ ciudad.nombre }}</option>
+			}
+		</select>
+	</section>
+</main>

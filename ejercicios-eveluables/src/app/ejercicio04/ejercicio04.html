@@ -1,0 +1,17 @@
+<button type="button" (click)="abrirVentana()" [disabled]="ventanaHija && !ventanaHija.closed">
+	Abrir ventana hija
+</button>
+
+@if (ventanaHija && !ventanaHija.closed) {
+	<div class="controles-ventana">
+		<button type="button" (click)="moverVentana('arriba')">Arriba</button>
+		<button type="button" (click)="moverVentana('abajo')">Abajo</button>
+		<button type="button" (click)="moverVentana('izquierda')">Izquierda</button>
+		<button type="button" (click)="moverVentana('derecha')">Derecha</button>
+		<button type="button" (click)="cerrarVentana()">Cerrar ventana</button>
+	</div>
+}
+
+@if (mensajeError) {
+	<p class="mensaje-error">{{ mensajeError }}</p>
+}

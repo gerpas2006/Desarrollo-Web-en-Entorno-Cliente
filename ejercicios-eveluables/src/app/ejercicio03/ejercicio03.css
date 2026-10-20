@@ -1,0 +1,30 @@
+.controles,
+.botones-historial,
+.retroceder-formulario {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 12px 0;
+}
+
+.recuadro {
+	display: grid;
+	place-items: center;
+	width: 280px;
+	height: 130px;
+	border: 2px solid #333;
+	border-radius: 6px;
+	color: #222;
+	font-weight: bold;
+}
+
+input,
+select,
+button {
+	padding: 6px 10px;
+}
+
+.mensaje-error {
+	color: #a40000;
+	font-weight: bold;
+}

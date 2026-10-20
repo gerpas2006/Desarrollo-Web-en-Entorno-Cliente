@@ -1,0 +1,32 @@
+<h3>Generador de números aleatorios</h3>
+
+<div class="formulario">
+	<label for="minimo">Mínimo:</label>
+	<input id="minimo" type="number" [(ngModel)]="minimo">
+
+	<label for="maximo">Máximo:</label>
+	<input id="maximo" type="number" [(ngModel)]="maximo">
+
+	<label for="cantidad">Cantidad de números:</label>
+	<input id="cantidad" type="number" [(ngModel)]="cantidad">
+
+	<label>
+		<input type="checkbox" [(ngModel)]="permitirRepetidos">
+		Permitir números repetidos
+	</label>
+
+	<button type="button" (click)="generarNumeros()">Generar números</button>
+</div>
+
+@if (mensajeError) {
+	<p class="error">{{ mensajeError }}</p>
+}
+
+@if (numeros.length > 0) {
+	<p>Números generados:</p>
+	<ul>
+		@for (numero of numeros; track $index) {
+			<li>{{ numero }}</li>
+		}
+	</ul>
+}

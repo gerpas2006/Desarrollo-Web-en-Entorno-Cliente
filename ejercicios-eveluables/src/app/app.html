@@ -1,0 +1,49 @@
+<h1>Ejercicios</h1>
+
+<div class="barra-botones">
+  <button type="button" (click)="mostrarEjercicio01 = !mostrarEjercicio01">
+    {{ mostrarEjercicio01 ? 'Ocultar ejercicio 01' : 'Abrir ejercicio 01' }}
+  </button>
+
+  <button type="button" (click)="mostrarEjercicio02 = !mostrarEjercicio02">
+    {{ mostrarEjercicio02 ? 'Ocultar ejercicio 02' : 'Abrir ejercicio 02' }}
+  </button>
+
+  <button type="button" (click)="mostrarEjercicio03 = !mostrarEjercicio03">
+    {{ mostrarEjercicio03 ? 'Ocultar ejercicio 03' : 'Abrir ejercicio 03' }}
+  </button>
+
+  <button type="button" (click)="mostrarEjercicio04 = !mostrarEjercicio04">
+    {{ mostrarEjercicio04 ? 'Ocultar ejercicio 04' : 'Abrir ejercicio 04' }}
+  </button>
+</div>
+
+<div class="contenedor-ejercicios">
+  @if (mostrarEjercicio01) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 01</h2>
+      <app-ejercicio01></app-ejercicio01>
+    </div>
+  }
+
+  @if (mostrarEjercicio02) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 02</h2>
+      <app-ejercicio02></app-ejercicio02>
+    </div>
+  }
+
+  @if (mostrarEjercicio03) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 03</h2>
+      <app-ejercicio03></app-ejercicio03>
+    </div>
+  }
+
+  @if (mostrarEjercicio04) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 04</h2>
+      <app-ejercicio04></app-ejercicio04>
+    </div>
+  }
+</div>
