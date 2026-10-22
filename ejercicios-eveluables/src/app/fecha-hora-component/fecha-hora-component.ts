@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 
 interface Ciudad {
   nombre: string;
@@ -6,14 +7,14 @@ interface Ciudad {
 }
 
 @Component({
-  imports: [],
+  imports: [CommonModule],
   selector: 'app-fecha-hora-component',
   styleUrl: './fecha-hora-component.css',
   templateUrl: './fecha-hora-component.html',
 })
 export class FechaHoraComponent implements OnInit, OnDestroy {
   // Guardamos la fecha en una variable para poder actualizarla desde el intervalo.
-  fechaActual = new Date();
+  fechaActual = signal(new Date());
   // Empieza activado porque suele ser el formato más fácil de leer.
   formato24Horas = true;
   // Londres es la ciudad que aparece seleccionada al abrir el ejercicio.
@@ -29,7 +30,7 @@ export class FechaHoraComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Cada segundo creamos una fecha nueva para que el reloj no se quede parado.
     this.intervalo = setInterval(() => {
-      this.fechaActual = new Date();
+      this.fechaActual.set(new Date());
     }, 1000);
   }
 

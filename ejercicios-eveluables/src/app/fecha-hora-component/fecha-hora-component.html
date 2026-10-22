@@ -4,12 +4,12 @@
 	<section class="relojes" aria-label="Relojes">
 		<article class="reloj-tarjeta">
 			<h2>Hora local</h2>
-			<p class="hora">{{ mostrarHora(fechaActual) }}</p>
+			<p class="hora">{{ mostrarHora(fechaActual()) }}</p>
 		</article>
 
 		<article class="reloj-tarjeta">
 			<h2>{{ nombreCiudadSeleccionada() }}</h2>
-			<p class="hora">{{ mostrarHora(fechaActual, ciudadSeleccionada) }}</p>
+			<p class="hora">{{ mostrarHora(fechaActual(), ciudadSeleccionada) }}</p>
 		</article>
 	</section>
 
