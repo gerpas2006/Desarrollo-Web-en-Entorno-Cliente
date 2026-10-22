@@ -3,11 +3,11 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
-  selector: 'app-ejercicio02',
-  styleUrl: './ejercicio02.css',
-  templateUrl: './ejercicio02.html',
+  selector: 'app-numero-aleatorio-component',
+  styleUrl: './numero-aleatorio-component.css',
+  templateUrl: './numero-aleatorio-component.html',
 })
-export class Ejercicio02 {
+export class NumeroAleatorioComponent {
   minimo = 1;
   maximo = 10;
   cantidad = 5;
@@ -50,3 +50,4 @@ export class Ejercicio02 {
     }
   }
 }
+

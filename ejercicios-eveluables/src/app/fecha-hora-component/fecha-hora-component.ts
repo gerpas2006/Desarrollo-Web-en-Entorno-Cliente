@@ -7,11 +7,11 @@ interface Ciudad {
 
 @Component({
   imports: [],
-  selector: 'app-ejercicio01',
-  styleUrl: './ejercicio01.css',
-  templateUrl: './ejercicio01.html',
+  selector: 'app-fecha-hora-component',
+  styleUrl: './fecha-hora-component.css',
+  templateUrl: './fecha-hora-component.html',
 })
-export class Ejercicio01 implements OnInit, OnDestroy {
+export class FechaHoraComponent implements OnInit, OnDestroy {
   // Guardamos la fecha en una variable para poder actualizarla desde el intervalo.
   fechaActual = new Date();
   // Empieza activado porque suele ser el formato más fácil de leer.
@@ -81,3 +81,4 @@ export class Ejercicio01 implements OnInit, OnDestroy {
     )?.nombre ?? '';
   }
 }
+

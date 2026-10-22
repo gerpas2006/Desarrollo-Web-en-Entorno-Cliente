@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { Ejercicio01 } from './ejercicio01/ejercicio01';
-import { Ejercicio02 } from './ejercicio02/ejercicio02';
+import { FechaHoraComponent } from './fecha-hora-component/fecha-hora-component';
+import { NumeroAleatorioComponent } from './numero-aleatorio-component/numero-aleatorio-component';
 import { Ejercicio03 } from './ejercicio03/ejercicio03';
 import { Ejercicio04 } from './ejercicio04/ejercicio04';
 
 @Component({
-  imports: [Ejercicio01, Ejercicio02, Ejercicio03, Ejercicio04],
+  imports: [FechaHoraComponent, NumeroAleatorioComponent, Ejercicio03, Ejercicio04],
   selector: 'app-root',
   templateUrl: './app.html',
 })
