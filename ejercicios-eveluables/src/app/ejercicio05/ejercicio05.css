@@ -1,0 +1,48 @@
+.ejercicio05 {
+	color: var(--text-color);
+}
+
+.paneles-preferencias {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.panel-preferencias {
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	padding: 1rem;
+	background: var(--panel-color);
+}
+
+dl {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.35rem 0.75rem;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: 0;
+}
+
+label {
+	display: grid;
+	gap: 0.35rem;
+	margin: 1rem 0;
+}
+
+select,
+button {
+	font: inherit;
+	padding: 0.45rem 0.65rem;
+}
+
+@media (max-width: 650px) {
+	.paneles-preferencias {
+		grid-template-columns: 1fr;
+	}
+}

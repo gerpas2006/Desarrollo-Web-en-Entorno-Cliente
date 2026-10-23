@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--text-color: #1d252c;
+	--panel-color: #f3f6f8;
+	--border-color: #aebbc5;
+	background: #ffffff;
+	color: var(--text-color);
+}
+
+:root[data-theme='oscuro'] {
+	--text-color: #edf3f5;
+	--panel-color: #26333b;
+	--border-color: #71818b;
+	background: #172027;
+}
+
+body {
+	margin: 0;
+	background: inherit;
+	color: inherit;
+	font-family: Georgia, 'Times New Roman', serif;
+}

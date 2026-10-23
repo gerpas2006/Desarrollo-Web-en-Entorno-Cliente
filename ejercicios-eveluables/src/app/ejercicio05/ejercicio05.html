@@ -1,1 +1,44 @@
-<p>ejercicio05 works!</p>
+<section class="ejercicio05">
+	<h2>Preferencias del usuario</h2>
+	<div class="paneles-preferencias">
+		<article class="panel-preferencias">
+			<h3>Cookies</h3>
+			<p>Hola, <strong>{{ nombreCookies }}</strong>.</p>
+			<dl>
+				<dt>Visitas</dt>
+				<dd>{{ visitasCookies }}</dd>
+				<dt>Última visita</dt>
+				<dd>{{ ultimaVisitaCookies }}</dd>
+			</dl>
+			<label>
+				Tema
+				<select [(ngModel)]="temaCookies" (ngModelChange)="cambiarTemaCookies()">
+					<option value="">Sin preferencia</option>
+					<option value="claro">Claro</option>
+					<option value="oscuro">Oscuro</option>
+				</select>
+			</label>
+			<button type="button" (click)="borrarCookies()">Eliminar cookies</button>
+		</article>
+
+		<article class="panel-preferencias">
+			<h3>localStorage</h3>
+			<p>Hola, <strong>{{ nombreLocalStorage }}</strong>.</p>
+			<dl>
+				<dt>Visitas</dt>
+				<dd>{{ visitasLocalStorage }}</dd>
+				<dt>Última visita</dt>
+				<dd>{{ ultimaVisitaLocalStorage }}</dd>
+			</dl>
+			<label>
+				Tema
+				<select [(ngModel)]="temaLocalStorage" (ngModelChange)="cambiarTemaLocalStorage()">
+					<option value="">Sin preferencia</option>
+					<option value="claro">Claro</option>
+					<option value="oscuro">Oscuro</option>
+				</select>
+			</label>
+			<button type="button" (click)="borrarLocalStorage()">Eliminar localStorage</button>
+		</article>
+	</div>
+</section>

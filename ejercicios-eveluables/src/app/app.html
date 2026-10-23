@@ -16,6 +16,10 @@
   <button type="button" (click)="mostrarEjercicio04 = !mostrarEjercicio04">
     {{ mostrarEjercicio04 ? 'Ocultar ejercicio 04' : 'Abrir ejercicio 04' }}
   </button>
+
+  <button type="button" (click)="mostrarEjercicio05 = !mostrarEjercicio05">
+    {{ mostrarEjercicio05 ? 'Ocultar ejercicio 05' : 'Abrir ejercicio 05' }}
+  </button>
 </div>
 
 <div class="contenedor-ejercicios">
@@ -44,6 +48,13 @@
     <div class="ejercicio-card">
       <h2>Ejercicio 04</h2>
       <app-ejercicio04></app-ejercicio04>
+    </div>
+  }
+
+  @if (mostrarEjercicio05) {
+    <div class="ejercicio-card">
+      <h2>Ejercicio 05</h2>
+      <app-ejercicio05></app-ejercicio05>
     </div>
   }
 </div>
